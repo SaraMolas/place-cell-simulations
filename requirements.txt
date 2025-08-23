@@ -1,0 +1,6 @@
+ratinabox @ git+https://github.com/RatInABox-Lab/RatInABox.git
+numpy>=1.24
+pandas>=2.1
+matplotlib>=3.7
+tqdm>=4.66
+jupyter>=1.0
