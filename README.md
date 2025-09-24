@@ -33,3 +33,7 @@ git clone https://github.com/SaraMolas/place-cell-simulations.git
 cd place-cell-simulations
 pip install -r requirements.txt
 ```
+
+## Citations 
+
+DOI: 10.5281/zenodo.17196242
