@@ -49,4 +49,4 @@ def generate_trajectory(track_length: float = 1.0, dt: float = 0.005, duration_s
         "seed": int(seed) if seed is not None else None,
     }
 
-    return {"time": time, "position": pos, "velocity": vel, "meta": meta}
+    return {"time": time, "pos": pos, "velocity": vel, "meta": meta}

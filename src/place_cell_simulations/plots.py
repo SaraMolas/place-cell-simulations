@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from scipy.ndimage import gaussian_filter1d
 
 
-def occupancy_plot(time: np.ndarray, pos: np.ndarray, track_length: float, n_bins: int):
+def occupancy_plot(pos: np.ndarray, track_length: float, n_bins: int):
     """
     Plot occupancy histogram.
     """
