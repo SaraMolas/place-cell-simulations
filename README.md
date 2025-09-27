@@ -11,8 +11,9 @@ Modeling them synthetically is useful for:
 
 
 ## Repository structure
-- `notebooks/` : Jupyter notebooks for experiments
 - `src/` : Python modules for dataset generation
+- `examples/` : CLI example
+- `notebooks/` : Jupyter notebooks for experiments
 - `data/` : placeholder for generated data
 
 ## Getting Started
