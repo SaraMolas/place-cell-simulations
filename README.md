@@ -5,17 +5,7 @@ Lightweight research-focused toolkit to create toy data for testing decoders, re
 
 ## Overview
 
-This repository provides:
-- Functions under `src/` for:
-  - trajectory generation (OU velocity with reflecting boundaries)
-  - place-cell tuning and spike generation
-  - noise generation
-  - utilities for empirical rate maps and basic plotting
-- A cleaned Jupyter notebook in `notebooks/` demonstrating usage
-- An example runner `examples/run_synth.py` which generates a toy dataset and a preview figure
-
-This project is meant for method development, reproducible demos, and quick experiments.
-
+```
 place-cell-simulations/
 ├── README.md
 ├── requirements.txt
@@ -24,15 +14,15 @@ place-cell-simulations/
 │   ├── __init__.py
 │   ├── spikes.py # to generate place cells neural data and noise
 │   ├── movement.py # to simulate movement of an animal along a 1D track
-│   ├── utils.py # functions for data processing
+│   ├── utils.py # utilities for rates computation across positions
 │   └── plots.py # plotting functions
-├── notebooks/
-└──  examples/
-
+├── notebooks/ # clean notebook demonstrating usage
+└──  examples/ # example runner script that generates a toy dataset and a preview figure
+```
 
 ## Quick start
 
-> Recommended: create a virtual environment first
+Recommended: create a virtual environment first
 
 ```bash
 # from repo root
