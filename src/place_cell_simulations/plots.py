@@ -47,7 +47,7 @@ def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.arra
     if spike_times.shape[0] != len(centers):
         raise ValueError("Number of neurons and number of centers must match.")
     
-    n_neurons = spike_times.shape[0]
+    n_neurons = len(spike_times)
     
     fig, ax = plt.subplots(figsize=(10, 2 + 0.5 * n_neurons))
     for i in range(n_neurons):
