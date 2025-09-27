@@ -20,7 +20,7 @@ def compute_empirical_rate_maps(n_bins: int, track_length: float, pos: np.ndarra
     """
     Compute empirical rate maps for all neurons.
     """
-    n_neurons = spike_positions.shape[0]
+    n_neurons = len(spike_positions)
     bins = np.linspace(0, track_length, n_bins + 1)
     bin_centers = 0.5 * (bins[:-1] + bins[1:])
     occupancy, _ = np.histogram(pos, bins=bins)
