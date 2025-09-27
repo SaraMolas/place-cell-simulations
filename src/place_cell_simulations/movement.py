@@ -17,7 +17,7 @@ def generate_trajectory(track_length: float = 1.0, dt: float = 0.005, duration_s
     """
 
     rng = np.random.default_rng(seed)
-    n_steps = int(np.ceil(T / dt))
+    n_steps = int(np.ceil(duration_s/ dt))
     time = np.arange(n_steps) * dt
 
     # Initialize arrays

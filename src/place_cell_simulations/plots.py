@@ -94,7 +94,7 @@ def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_
     plt.show()
     return fig, ax
 
-def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.darray, n_bins: int=50, smooth_sigma: float=1.0):
+def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.ndarray, n_bins: int=50, smooth_sigma: float=1.0):
     """
     Plot firing rate heatmap for a population of neurons on a 1D track.
     
