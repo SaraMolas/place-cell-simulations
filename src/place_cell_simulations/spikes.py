@@ -48,7 +48,8 @@ def generate_place_cell_spikes(centers: np.ndarray, sigma_pf: np.ndarray, peak_r
 
     return spikes, spike_times, spike_positions, spike_counts
 
-def generate_noise_cell_spikes(n_noise: int, min_rate: int, max_rate: int, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray]:
+def generate_noise_cell_spikes(n_noise: int, min_rate: int, max_rate: int, duration_s: float, 
+                                dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray]:
     """
     Generate spikes for noise cells (firing independent of position) on a 1D track.
     """
@@ -56,7 +57,7 @@ def generate_noise_cell_spikes(n_noise: int, min_rate: int, max_rate: int, time:
     noise_rates = np.random.uniform(min_rate, max_rate, size=n_noise)  # Hz, random per neuron
 
     # expand rates to all timesteps
-    n_steps = int(time[-1] / dt)
+    n_steps = int(duration_s / dt)
     noise_rates_matrix = noise_rates[:, None] * np.ones((n_noise, n_steps))
 
     # simulate spikes: Bernoulli draws
