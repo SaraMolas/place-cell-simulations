@@ -16,7 +16,7 @@ def occupancy_plot(pos: np.ndarray, track_length: float, n_bins: int):
     occupancy = hist.astype(float) / hist.sum()
     centers_plot = 0.5 * (bins[:-1] + bins[1:])
 
-    fig, ax = plt.figure(figsize=(12, 5))
+    fig, ax = plt.subplots(figsize=(12, 5))
     plt.bar(centers_plot, occupancy, width=centers_plot[1]-centers_plot[0], color='C1', edgecolor='k', alpha=0.8)
     plt.xlabel("position (m)")
     plt.ylabel("occupancy fraction")
@@ -31,7 +31,7 @@ def plot_position(time: np.ndarray, pos: np.ndarray, track_length: float):
     """
     Plot trajectory along track.
     """
-    fig, ax = plt.figure(figsize=(12, 5))
+    fig, ax = plt.subplots(figsize=(12, 5))
     plt.plot(time, pos, linewidth=0.4)
     plt.ylabel("position (m)")
     plt.title("Movement trajectory along track")
@@ -49,7 +49,7 @@ def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.arra
     
     n_neurons = spike_times.shape[0]
     
-    fig, ax = plt.figure(figsize=(10, 2 + 0.5 * n_neurons))
+    fig, ax = plt.subplots(figsize=(10, 2 + 0.5 * n_neurons))
     for i in range(n_neurons):
         plt.scatter(spike_times[i], np.ones_like(spike_times[i]) * i, s=10)
     plt.yticks(np.arange(n_neurons), [f'Cell {i} (center={centers[i]:.2f} m)' for i in range(n_neurons)])
@@ -80,7 +80,7 @@ def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_
     if empirical_rates.shape[1] != len(bin_centers):
         raise ValueError("Number of position bins in empirical rates and bin centers must match.")
     
-    fig, ax = plt.figure(figsize=(10, 4))
+    fig, ax = plt.subplots(figsize=(10, 4))
     for i in range(n_neurons):
         plt.subplot(n_neurons, 1, i+1)
         plt.plot(bin_centers, empirical_rates[i], label='Empirical rate (spikes / occupancy)')
@@ -137,7 +137,7 @@ def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.ndarray,
         rate_map = gaussian_filter1d(rate_map, sigma=smooth_sigma, axis=1, mode="nearest")
     
     # Plot heatmap
-    fig, ax = plt.figure(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10, 6))
     plt.imshow(rate_map, aspect="auto", origin="lower", 
                extent=[positions.min(), positions.max(), 0, n_cells],
                cmap="viridis")
