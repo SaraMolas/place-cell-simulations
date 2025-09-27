@@ -1,39 +1,9 @@
 # Place cell simulation
 
-**Generate synthetic hippocampal place-cell spike and position datasets.**  
+**Generate synthetic hippocampal place-cell spike and noisy spikes, with realistic movement along a linear track.**  
 Lightweight research-focused toolkit to create toy data for testing decoders, representation analyses, and latent feature discovery workflows.
 
-## Motivation
-
-Place cells, discovered in the hippocampus, are neurons that fire when an animal is in a specific location in an environment.  
-Modeling them synthetically is useful for:
-- Testing spatial decoding algorithms
-- Validating analysis pipelines
-
-
-## Repository structure
-- `src/` : Python modules for dataset generation
-- `examples/` : CLI example
-- `notebooks/` : Jupyter notebooks for experiments
-- `data/` : placeholder for generated data
-
-## Getting Started
-
-Clone the repo and install dependencies:
-
-```bash
-git clone https://github.com/SaraMolas/place-cell-simulations.git
-cd place-cell-simulations
-pip install -r requirements.txt
-```
-
-## Citations 
-
-DOI: 10.5281/zenodo.17196242
-
----
-
-## Quick overview
+## Overview
 
 This repository provides:
 - Functions under `src/` for:
@@ -59,7 +29,6 @@ place-cell-simulations/
 ├── notebooks/
 └──  examples/
 
----
 
 ## Quick start
 
@@ -104,3 +73,7 @@ fig = pcs.plot_rate_maps(spikes = spikes, positions = traj["pos"], times = traj[
 ## Contact
 
 Maintainer: Sara Molas Medina. Open issues or PRs for questions, bugs, or feature requests.
+
+## Citations 
+
+DOI: 10.5281/zenodo.17196242
