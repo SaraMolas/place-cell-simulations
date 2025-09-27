@@ -5,7 +5,7 @@ import numpy as np
 from typing import Dict, Optional, Tuple
 
 def generate_place_cell_spikes(centers: np.ndarray, sigma_pf: np.ndarray, peak_rates: np.ndarray, baseline_rate: float,
-                               pos: np.ndarray, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+                               pos: np.ndarray, time: np.ndarray, duration_s: float, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     
     """
     Generate spikes for place cells on a 1D track.
@@ -32,7 +32,7 @@ def generate_place_cell_spikes(centers: np.ndarray, sigma_pf: np.ndarray, peak_r
         raise ValueError("pos and time must have the same length.")
 
     n_neurons = len(centers)
-    n_steps = int(time[-1] / dt)
+    n_steps = int(duration_s / dt)
     rates = np.zeros((n_neurons, n_steps))
     for i in range(n_neurons):
         rates[i] = baseline_rate + peak_rates[i] * np.exp(-0.5 * ((pos - centers[i]) / sigma_pf[i])**2)
