@@ -1,8 +1,6 @@
 # Place cell simulation
 
-This repository is a  **synthetic place cell data**, focusing on modeling spatial fields in a 1D linear track environment.  
-
----
+This repository generates **synthetic place cell data**, focusing on modeling spatial fields in a 1D linear track environment.  
 
 ## Motivation
 
@@ -12,7 +10,10 @@ Modeling them synthetically is useful for:
 - Validating analysis pipelines
 
 
----
+## Repository structure
+- `notebooks/` : Jupyter notebooks for experiments
+- `src/` : Python modules for dataset generation
+- `data/` : placeholder for generated data
 
 ## Getting Started
 
