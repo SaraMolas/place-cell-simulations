@@ -30,10 +30,10 @@ python3 -m venv .venv
 source .venv/bin/activate         # macOS / Linux
 # .\.venv\Scripts\activate        # Windows PowerShell
 
-# install package in editable mode (see note about pyproject.toml below)
+# install package in editable mode 
 pip install -e .
 
-# install dev/test deps (if not already present)
+# install requirements
 pip install -r requirements.txt
 ```
 
