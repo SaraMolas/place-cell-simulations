@@ -1,16 +1,6 @@
 # Place cell simulation
 
-This repository explores different methods for generating **synthetic place cell data**, focusing on modeling spatial fields in a 1D linear track environment.  
-
-Currently, it contains two Jupyter notebooks:
-
-1. **RatInABox_exploration.ipynb**  
-   Uses the [RatInABox](https://github.com/RatInABox-Lab/RatInABox) package to generate synthetic place cells.  
-   While testing, I found a bug in how place cells are created in a 1D linear track setup, which motivated further work.  
-
-2. **linear_track_simulation.ipynb**  
-   My own implementation of a place cell simulation in a 1D linear track.  
-   This notebook currently simulates **two place cells** with Gaussian receptive fields centered at different positions.  
+This repository is a  **synthetic place cell data**, focusing on modeling spatial fields in a 1D linear track environment.  
 
 ---
 
@@ -18,7 +8,7 @@ Currently, it contains two Jupyter notebooks:
 
 Place cells, discovered in the hippocampus, are neurons that fire when an animal is in a specific location in an environment.  
 Modeling them synthetically is useful for:
-- Testing spatial coding algorithms
+- Testing spatial decoding algorithms
 - Validating analysis pipelines
 
 
