@@ -33,7 +33,7 @@ def compute_empirical_rate_maps(n_bins: int, track_length: float, pos: np.ndarra
     
     return empirical_rate_maps, bin_centers
 
-def compute_theoretical_rate_maps(track_length: float, centers: np.ndarray, sigma_pf: np.ndarray, peak_rates: np.ndarray, 
+def compute_theoretical_rate_maps(n_bins: int, track_length: float, centers: np.ndarray, sigma_pf: np.ndarray, peak_rates: np.ndarray, 
                                   baseline_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     """
     Compute theoretical Gaussian rate maps for all neurons.
@@ -43,7 +43,7 @@ def compute_theoretical_rate_maps(track_length: float, centers: np.ndarray, sigm
         raise ValueError("Length of centers, sigma_pf, and peak_rates must match.")
     
     n_neurons = len(centers)    
-    x = np.linspace(0, track_length, 500)
+    x = np.linspace(0, track_length, n_bins)
     theoretical_rates = np.zeros((n_neurons, x.size))
     for i in range(n_neurons):
         theoretical_rates[i] = baseline_rate + peak_rates[i] * np.exp(-0.5 * ((x - centers[i]) / sigma_pf[i])**2)
