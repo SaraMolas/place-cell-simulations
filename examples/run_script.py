@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import argparse
-from place-cell-simulations import (
+from place_cell_simulations import (
     generate_trajectory,
     save_dataset,
     generate_place_cell_spikes,
@@ -73,7 +73,7 @@ def main():
 
     # join spikes of place cells and noise cells and save figure
     all_spikes = np.vstack([spikes, noise_spikes])
-    fig5, _ = plot_rate_maps(spikes = all_spikes, positions = traj["pos"], times = traj["time"], n_bins = 50, smooth_sigma = 1.0):
+    fig5, _ = plot_rate_maps(spikes = all_spikes, positions = traj["pos"], times = traj["time"], n_bins = 50, smooth_sigma = 1.0)
     
     # Save ratemap of all neurons
     fig5.savefig(args.preview, dpi=150)
