@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from scipy.ndimage import gaussian_filter1d
 
 
-def occupancy_plot(time: np.ndarray, pos: np.ndarray, track_length: float, n_bins: int) -> None:
+def occupancy_plot(time: np.ndarray, pos: np.ndarray, track_length: float, n_bins: int):
     """
     Plot occupancy histogram.
     """
@@ -16,7 +16,7 @@ def occupancy_plot(time: np.ndarray, pos: np.ndarray, track_length: float, n_bin
     occupancy = hist.astype(float) / hist.sum()
     centers_plot = 0.5 * (bins[:-1] + bins[1:])
 
-    plt.figure(figsize=(12, 5))
+    fig, ax = plt.figure(figsize=(12, 5))
     plt.bar(centers_plot, occupancy, width=centers_plot[1]-centers_plot[0], color='C1', edgecolor='k', alpha=0.8)
     plt.xlabel("position (m)")
     plt.ylabel("occupancy fraction")
@@ -25,18 +25,21 @@ def occupancy_plot(time: np.ndarray, pos: np.ndarray, track_length: float, n_bin
     plt.xticks(np.linspace(0, track_length, 11))
     plt.show()
 
+    return fig, ax
 
-def plot_position(time: np.ndarray, pos: np.ndarray, track_length: float, last_zone: float) -> None:
+def plot_position(time: np.ndarray, pos: np.ndarray, track_length: float):
     """
     Plot trajectory along track.
     """
-    plt.figure(figsize=(12, 5))
+    fig, ax = plt.figure(figsize=(12, 5))
     plt.plot(time, pos, linewidth=0.4)
     plt.ylabel("position (m)")
     plt.title("Movement trajectory along track")
     plt.show()
 
-def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.array) -> None:
+    return fig, ax
+
+def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.array):
     """
     Plot spike raster of all neurons.
     """
@@ -45,7 +48,8 @@ def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.arra
         raise ValueError("Number of neurons and number of centers must match.")
     
     n_neurons = spike_times.shape[0]
-    plt.figure(figsize=(10, 2 + 0.5 * n_neurons))
+    
+    fig, ax = plt.figure(figsize=(10, 2 + 0.5 * n_neurons))
     for i in range(n_neurons):
         plt.scatter(spike_times[i], np.ones_like(spike_times[i]) * i, s=10)
     plt.yticks(np.arange(n_neurons), [f'Cell {i} (center={centers[i]:.2f} m)' for i in range(n_neurons)])
@@ -56,9 +60,11 @@ def plot_spike_raster(spike_times: np.ndarray, duration: float, centers: np.arra
     plt.xlim(0, duration)
     plt.show()
 
+    return fig, ax
+
 def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_rates: np.ndarray, 
                                        bin_centers: np.ndarray, centers: np.ndarray, peak_rates: np.ndarray, 
-                                       x: np.ndarray, track_length: float) -> None:
+                                       x: np.ndarray, track_length: float):
     """
     Plot empirical and theoretical rate maps for all neurons.
     """
@@ -74,7 +80,7 @@ def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_
     if empirical_rates.shape[1] != len(bin_centers):
         raise ValueError("Number of position bins in empirical rates and bin centers must match.")
     
-    plt.figure(figsize=(10, 4))
+    fig, ax = plt.figure(figsize=(10, 4))
     for i in range(n_neurons):
         plt.subplot(n_neurons, 1, i+1)
         plt.plot(bin_centers, empirical_rates[i], label='Empirical rate (spikes / occupancy)')
@@ -86,8 +92,9 @@ def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_
     plt.xlabel('Position (m)')
     plt.tight_layout()
     plt.show()
+    return fig, ax
 
-def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.darray, n_bins: int=50, smooth_sigma: float=1.0) -> None:
+def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.darray, n_bins: int=50, smooth_sigma: float=1.0):
     """
     Plot firing rate heatmap for a population of neurons on a 1D track.
     
@@ -130,7 +137,7 @@ def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.darray, 
         rate_map = gaussian_filter1d(rate_map, sigma=smooth_sigma, axis=1, mode="nearest")
     
     # Plot heatmap
-    plt.figure(figsize=(10, 6))
+    fig, ax = plt.figure(figsize=(10, 6))
     plt.imshow(rate_map, aspect="auto", origin="lower", 
                extent=[positions.min(), positions.max(), 0, n_cells],
                cmap="viridis")
@@ -139,4 +146,6 @@ def plot_rate_maps(spikes: np.ndarray, positions: np.ndarray, times: np.darray, 
     plt.ylabel("Neuron index")
     plt.title("Firing rate heatmap")
     plt.show()
+
+    return fig, ax
     

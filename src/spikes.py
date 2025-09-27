@@ -5,7 +5,7 @@ import numpy as np
 from typing import Dict, Optional, Tuple
 
 def generate_place_cell_spikes(centers: np.ndarray, sigma_pf: np.ndarray, peak_rates: np.ndarray, baseline_rate: float,
-                               pos: np.ndarray, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                               pos: np.ndarray, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     
     """
     Generate spikes for place cells on a 1D track.
@@ -46,14 +46,14 @@ def generate_place_cell_spikes(centers: np.ndarray, sigma_pf: np.ndarray, peak_r
     spike_positions = [pos[spikes[i]] for i in range(n_neurons)]
     spike_counts = np.sum(spikes, axis=1)
 
-    return spike_times, spike_positions, spike_counts
+    return spikes, spike_times, spike_positions, spike_counts
 
-def generate_noise_cell_spikes(n_noise: int, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray]:
+def generate_noise_cell_spikes(n_noise: int, min_rate: int, max_rate: int, time: np.ndarray, dt: float, seed: Optional[int]=42) -> Tuple[np.ndarray]:
     """
     Generate spikes for noise cells (firing independent of position) on a 1D track.
     """
 
-    noise_rates = np.random.uniform(1, 5, size=n_noise)  # Hz, random per neuron
+    noise_rates = np.random.uniform(min_rate, max_rate, size=n_noise)  # Hz, random per neuron
 
     # expand rates to all timesteps
     n_steps = int(time[-1] / dt)
