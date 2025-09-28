@@ -14,8 +14,7 @@ def save_dataset(dataset: Dict[str, Any], out_file: str) -> None:
     os.makedirs(os.path.dirname(out_file) or ".", exist_ok=True)
     meta = json.dumps(dataset.get("meta", {}))
     np.savez_compressed(out_file, time=dataset["time"], pos=dataset["pos"], vel=dataset["vel"], spikes=dataset["spikes"],
-                        noise_spikes=dataset["noise_spikes"]}
-                         meta=meta)
+                         noise_spikes=dataset["noise_spikes"],  meta=meta)
 
 
 def compute_empirical_rate_maps(n_bins: int, track_length: float, pos: np.ndarray, dt: float, 
