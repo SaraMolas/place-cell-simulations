@@ -81,7 +81,7 @@ def plot_empirical_vs_theoretical_rate(empirical_rates: np.ndarray, theoretical_
     if empirical_rates.shape[1] != len(bin_centers):
         raise ValueError("Number of position bins in empirical rates and bin centers must match.")
     
-    fig, ax = plt.subplots(figsize=(10, 2 + 0.5 * n_neurons))
+    fig, ax = plt.subplots(figsize=(10, 2 + 2 * n_neurons))
     for i in range(n_neurons):
         plt.subplot(n_neurons, 1, i+1)
         plt.plot(bin_centers, empirical_rates[i], label='Empirical rate (spikes / occupancy)')
