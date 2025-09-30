@@ -1,14 +1,15 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="place_cell_simulations",           
+    name="place_cell_simulations",
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),           
     version="0.1.0",              
     description="Repo to simulate place cells and noise neurons",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     author="Sara Molas Medina",
-    url="https://github.com/SaraMolas/place-cell-simulations",
-    packages=find_packages(),              # automatically find submodules
+    url="https://github.com/SaraMolas/place-cell-simulations",          # automatically find submodules
     install_requires=[
         # list dependencies here
         "matplotlib",
