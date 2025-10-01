@@ -1,7 +1,14 @@
 # Place cell simulation
 
 **Generate synthetic hippocampal place-cell spike and noisy spikes, with realistic movement along a linear track.**  
-Lightweight research-focused toolkit to create toy data for testing decoders, representation analyses, and latent feature discovery workflows.
+
+Place cells are neurons in the hippocampus that are active when an animal is in a specific location, encoding spatial features used in spatial navigation and memory. 
+
+The figure below shows an example ratemap generated with this repo: each row corresponds to a simulated place cell, with high firing in its “place field” (a specific region of the track) and low activity elsewhere.
+
+![Example place-cell ratemaps](examples/ratemap.png)
+
+This lightweight research-focused toolkit can be used to simulate neural data for testing decoders, representation analyses, and latent feature discovery workflows.
 
 ## Overview
 
@@ -59,6 +66,12 @@ spikes = pcs.generate_place_cell_spikes(centers, sigmas, peak_rates, baseline_ra
 # generate ratemap plot
 fig = pcs.plot_rate_maps(spikes = spikes, positions = traj["pos"], times = traj["time"], n_bins = 50, smooth_sigma = 1.0)
 ```
+## Features
+- Generate synthetic place cells, with bidirectional Gaussian place fields. 
+- Create noisy neurons, randomly active along the track.
+- Simulate a trajectory along the linear track using Ornstein–Uhlenbeck equation. 
+- Option to generate a trajectory along the linear track undersampling one end of the track. 
+- Output spike matrix and position and time vectors.
 
 ## Contact
 
